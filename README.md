@@ -40,7 +40,7 @@
             <h2>Contato</h2>
             <form>
                 telefone (18)996949499
-                
+                 <form>
                 instagram https://www.instagram.com/vipp.store01?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==
             </form>
         </section>
