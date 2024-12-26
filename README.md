@@ -247,10 +247,10 @@
             <h2>Produtos em Destaque</h2>
             <div class="produtos-container">
                 <div class="produto">
-                    <img src="https://via.placeholder.com/300" alt="Pod Modelo 1">
+                    <img src="https://th.bing.com/th/id/OIP.laOWr1LpY19QKIO38e1xpgHaHa?w=600&h=600&rs=1&pid=ImgDetMain" alt="Pod Modelo 1">
                     <div class="produto-content">
                         <h3>Pod Modelo 1</h3>
-                        <p>R$ 99,90</p>
+                        <p>R$ 150,00</p>
                         <button>Comprar</button>
                     </div>
                 </div>
