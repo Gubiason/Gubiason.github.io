@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja Avançada de Pods</title>
+    <title>Loja 100% Funcional de Pods</title>
     <style>
         * {
             margin: 0;
@@ -140,24 +140,55 @@
             background: #0056b3;
         }
 
-        .contact-section {
+        .cart {
             padding: 4rem 1rem;
             background: #f5f5f5;
             text-align: center;
         }
 
-        .contact-section h2 {
+        .cart h2 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
         }
 
-        .contact-section form {
+        .cart-table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        .cart-table th, .cart-table td {
+            padding: 1rem;
+            border: 1px solid #ddd;
+        }
+
+        .cart-table th {
+            background-color: #0072ff;
+            color: white;
+        }
+
+        .cart-table tr:hover {
+            background-color: rgba(0, 114, 255, 0.1);
+        }
+
+        .cart-table img {
+            width: 50px;
+            height: auto;
+        }
+
+        .checkout-section {
+            padding: 4rem 1rem;
+            background: #fff;
+            text-align: center;
+        }
+
+        .checkout-section form {
             max-width: 600px;
             margin: 0 auto;
         }
 
-        .contact-section input,
-        .contact-section textarea {
+        .checkout-section input, 
+        .checkout-section textarea {
             width: 100%;
             padding: 0.8rem;
             margin-bottom: 1rem;
@@ -165,7 +196,7 @@
             border-radius: 8px;
         }
 
-        .contact-section button {
+        .checkout-section button {
             background: #0072ff;
             color: white;
             border: none;
@@ -176,7 +207,7 @@
             transition: background 0.3s ease-in-out;
         }
 
-        .contact-section button:hover {
+        .checkout-section button:hover {
             background: #0056b3;
         }
 
@@ -208,6 +239,10 @@
             .product-card-content p {
                 font-size: 1rem;
             }
+
+            .cart-table {
+                width: 100%;
+            }
         }
 
     </style>
@@ -215,12 +250,12 @@
 <body>
     <header>
         <div class="container">
-            <h1>Loja Avançada de Pods</h1>
+            <h1>Loja 100% Funcional de Pods</h1>
             <nav>
                 <ul>
                     <li><a href="#produtos">Produtos</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="#carrinho">Carrinho</a></li>
+                    <li><a href="#checkout">Checkout</a></li>
                 </ul>
             </nav>
         </div>
@@ -242,7 +277,7 @@
                     <div class="product-card-content">
                         <h3>Pod Modelo 1</h3>
                         <p>R$ 99,90</p>
-                        <button>Comprar</button>
+                        <button data-product="1">Adicionar ao Carrinho</button>
                     </div>
                 </div>
                 <div class="product-card">
@@ -250,7 +285,7 @@
                     <div class="product-card-content">
                         <h3>Pod Modelo 2</h3>
                         <p>R$ 129,90</p>
-                        <button>Comprar</button>
+                        <button data-product="2">Adicionar ao Carrinho</button>
                     </div>
                 </div>
                 <div class="product-card">
@@ -258,26 +293,60 @@
                     <div class="product-card-content">
                         <h3>Pod Modelo 3</h3>
                         <p>R$ 149,90</p>
-                        <button>Comprar</button>
+                        <button data-product="3">Adicionar ao Carrinho</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="contact-section" id="contato">
-            <h2>Contato</h2>
-            <form>
-                <input type="text" placeholder="Nome" required>
-                <input type="email" placeholder="Email" required>
-                <textarea rows="5" placeholder="Mensagem"></textarea>
-                <button type="submit">Enviar</button>
-            </form>
+        <section class="cart" id="carrinho">
+            <h2>Carrinho de Compras</h2>
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Imagem</th>
+                        <th>Produto</th>
+                        <th>Preço</th>
+                        <th>Quantidade</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-items">
+                    <!-- Itens serão adicionados via JavaScript -->
+                </tbody>
+            </table>
         </section>
 
-        <footer>
-            <p>&copy; 2024 Loja Avançada de Pods. Todos os direitos reservados.</p>
-        </footer>
+        <section class="checkout-section" id="checkout">
+            <h2>Finalizar Compra</h2>
+            <form id="checkout-form">
+                <input type="text" placeholder="Nome" required>
+                <input type="email" placeholder="Email" required>
+                <textarea rows="5" placeholder="Endereço de Entrega"></textarea>
+                <button type="submit">Finalizar Pedido</button>
+            </form>
+        </section>
     </main>
-</body>
-</html>
 
+    <footer>
+        <p>&copy; 2024 Loja 100% Funcional de Pods. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        let cart = [];
+
+        document.querySelectorAll('button[data-product]').forEach(button => {
+            button.addEventListener('click', () => {
+                let productId = button.getAttribute('data-product');
+                let productName = button.closest('.product-card-content').querySelector('h3').innerText;
+                let productPrice = button.closest('.product-card-content').querySelector('p').innerText;
+
+                // Adicionar ao carrinho
+                cart.push({ id: productId, name: productName, price: productPrice });
+                updateCart();
+            });
+        });
+
+        function updateCart() {
+            let cartItems = document.getElementById('cart-items');
+            cart
