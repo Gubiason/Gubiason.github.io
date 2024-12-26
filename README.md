@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja Elite de Pods</title>
+    <title>Loja Avançada de Pods</title>
     <style>
-        /* Reset */
         * {
             margin: 0;
             padding: 0;
@@ -13,24 +12,22 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            background: #f5f5f5;
+            font-family: 'Roboto', sans-serif;
             color: #333;
-            overflow-x: hidden;
+            background: #f9f9f9;
         }
 
-        /* Cabeçalho */
         header {
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: white;
+            padding: 1rem;
             position: sticky;
             top: 0;
-            background: linear-gradient(to right, #007BFF, #0056b3);
-            padding: 1rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        header .container {
+        .container {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
@@ -38,44 +35,33 @@
             align-items: center;
         }
 
-        header h1 {
-            color: white;
-            font-size: 2rem;
-        }
-
-        header nav ul {
+        nav ul {
             list-style: none;
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
-        header nav ul li {
-            position: relative;
-        }
-
-        header nav ul li a {
-            color: white;
+        nav ul li a {
             text-decoration: none;
+            color: white;
             padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: background 0.3s;
+            border-radius: 25px;
+            transition: background 0.3s ease-in-out;
         }
 
-        header nav ul li a:hover {
+        nav ul li a:hover {
             background: rgba(255, 255, 255, 0.2);
         }
 
-        /* Banner */
         .banner {
-            height: 80vh;
+            height: 70vh;
             background: url('https://via.placeholder.com/1920x800') no-repeat center center/cover;
             display: flex;
-            align-items: center;
             justify-content: center;
-            text-align: center;
+            align-items: center;
             color: white;
+            text-align: center;
             position: relative;
-            overflow: hidden;
         }
 
         .banner::after {
@@ -86,146 +72,150 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.4);
-            z-index: 1;
-        }
-
-        .banner-content {
-            position: relative;
-            z-index: 2;
         }
 
         .banner h2 {
             font-size: 3rem;
-            margin-bottom: 1rem;
         }
 
-        .banner p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
+        .products-section {
+            padding: 4rem 1rem;
+            background: #fff;
         }
 
-        .banner a {
-            display: inline-block;
-            background: #007BFF;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: background 0.3s;
-        }
-
-        .banner a:hover {
-            background: #0056b3;
-        }
-
-        /* Produtos */
-        #produtos {
-            padding: 2rem 1rem;
-        }
-
-        #produtos h2 {
+        .products-section h2 {
             text-align: center;
-            font-size: 2rem;
             margin-bottom: 2rem;
+            font-size: 2.5rem;
         }
 
-        .produtos-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .produto {
+        .product-card {
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            position: relative;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            max-width: 300px;
         }
 
-        .produto:hover {
+        .product-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
 
-        .produto img {
+        .product-card img {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
         }
 
-        .produto-content {
-            padding: 1.5rem;
+        .product-card-content {
+            padding: 1rem;
             text-align: center;
         }
 
-        .produto-content h3 {
-            font-size: 1.5rem;
+        .product-card-content h3 {
+            font-size: 1.8rem;
             margin-bottom: 0.5rem;
         }
 
-        .produto-content p {
-            font-size: 1rem;
-            margin-bottom: 1rem;
+        .product-card-content p {
+            font-size: 1.2rem;
             color: #555;
+            margin-bottom: 1rem;
         }
 
-        .produto-content button {
-            background: linear-gradient(to right, #007BFF, #0056b3);
+        .product-card-content button {
+            background: #0072ff;
             color: white;
             border: none;
-            padding: 0.5rem 1.5rem;
+            padding: 0.8rem 1.5rem;
             border-radius: 25px;
             cursor: pointer;
             font-size: 1rem;
-            transition: background 0.3s;
+            transition: background 0.3s ease-in-out;
         }
 
-        .produto-content button:hover {
-            background: linear-gradient(to right, #0056b3, #003f7f);
+        .product-card-content button:hover {
+            background: #0056b3;
         }
 
-        /* Sobre */
-        #sobre {
+        .contact-section {
             padding: 4rem 1rem;
             background: #f5f5f5;
             text-align: center;
         }
 
-        #sobre h2 {
-            font-size: 2rem;
+        .contact-section h2 {
+            font-size: 2.5rem;
             margin-bottom: 1rem;
         }
 
-        #sobre p {
-            max-width: 800px;
+        .contact-section form {
+            max-width: 600px;
             margin: 0 auto;
-            font-size: 1.2rem;
-            line-height: 1.8;
         }
 
-        /* Rodapé */
+        .contact-section input,
+        .contact-section textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .contact-section button {
+            background: #0072ff;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .contact-section button:hover {
+            background: #0056b3;
+        }
+
         footer {
             background: #333;
             color: white;
-            text-align: center;
             padding: 1rem;
-            margin-top: 2rem;
+            text-align: center;
         }
 
         footer p {
             font-size: 0.9rem;
         }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .banner h2 {
+                font-size: 2.5rem;
+            }
+
+            .product-card img {
+                height: 200px;
+            }
+
+            .product-card-content h3 {
+                font-size: 1.6rem;
+            }
+
+            .product-card-content p {
+                font-size: 1rem;
+            }
+        }
+
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Loja Elite de Pods</h1>
+            <h1>Loja Avançada de Pods</h1>
             <nav>
                 <ul>
                     <li><a href="#produtos">Produtos</a></li>
@@ -235,36 +225,37 @@
             </nav>
         </div>
     </header>
+
     <div class="banner">
         <div class="banner-content">
-            <h2>Encontre o Pod Perfeito</h2>
-            <p>Os melhores preços e qualidade garantida!</p>
-            <a href="#produtos">Ver Produtos</a>
+            <h2>Descubra o Melhor Pod do Mercado</h2>
+            <p>Qualidade e inovação ao seu alcance!</p>
         </div>
     </div>
+
     <main>
-        <section id="produtos">
+        <section class="products-section" id="produtos">
             <h2>Produtos em Destaque</h2>
-            <div class="produtos-container">
-                <div class="produto">
-                    <img src="https://th.bing.com/th/id/OIP.laOWr1LpY19QKIO38e1xpgHaHa?w=600&h=600&rs=1&pid=ImgDetMain" alt="Pod Modelo 1">
-                    <div class="produto-content">
+            <div class="products-container">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300" alt="Pod Modelo 1">
+                    <div class="product-card-content">
                         <h3>Pod Modelo 1</h3>
-                        <p>R$ 150,00</p>
+                        <p>R$ 99,90</p>
                         <button>Comprar</button>
                     </div>
                 </div>
-                <div class="produto">
+                <div class="product-card">
                     <img src="https://via.placeholder.com/300" alt="Pod Modelo 2">
-                    <div class="produto-content">
+                    <div class="product-card-content">
                         <h3>Pod Modelo 2</h3>
                         <p>R$ 129,90</p>
                         <button>Comprar</button>
                     </div>
                 </div>
-                <div class="produto">
+                <div class="product-card">
                     <img src="https://via.placeholder.com/300" alt="Pod Modelo 3">
-                    <div class="produto-content">
+                    <div class="product-card-content">
                         <h3>Pod Modelo 3</h3>
                         <p>R$ 149,90</p>
                         <button>Comprar</button>
@@ -272,13 +263,21 @@
                 </div>
             </div>
         </section>
-        <section id="sobre">
-            <h2>Sobre Nós</h2>
-            <p>Na Loja Elite de Pods, nosso objetivo é proporcionar produtos de alta qualidade com os melhores preços do mercado. Inovação e satisfação garantida!</p>
+
+        <section class="contact-section" id="contato">
+            <h2>Contato</h2>
+            <form>
+                <input type="text" placeholder="Nome" required>
+                <input type="email" placeholder="Email" required>
+                <textarea rows="5" placeholder="Mensagem"></textarea>
+                <button type="submit">Enviar</button>
+            </form>
         </section>
+
+        <footer>
+            <p>&copy; 2024 Loja Avançada de Pods. Todos os direitos reservados.</p>
+        </footer>
     </main>
-    <footer>
-        <p>&copy; 2024 Loja Elite de Pods. Todos os direitos reservados.</p>
-    </footer>
 </body>
 </html>
+
