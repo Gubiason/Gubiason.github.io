@@ -39,13 +39,8 @@
         <section id="contato">
             <h2>Contato</h2>
             <form>
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required>
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="mensagem">Mensagem:</label>
-                <textarea id="mensagem" name="mensagem" required></textarea>
-                <button type="submit">Enviar</button>
+                telefone (18)996949499
+                instagram https://www.instagram.com/vipp.store01?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==
             </form>
         </section>
     </main>
